@@ -38,10 +38,14 @@ def download(videoid,path):
         "yt-dlp.exe -i -f %s -o %s -R 2 --proxy %s %s"
         % (params["format"], params["name1"], params["proxy"], params["url"],))
     # 视频切割
+    # os.system(
+    #     "ffmpeg\\bin\\ffmpeg.exe -hwaccel auto -i  %s -c:v h264_qsv -ss %s -to %s -async 1 %s -y"
+    #     % (params["name1"], params["start"], params["end"], params["name2"])
+    # )
     os.system(
-        "ffmpeg\\bin\\ffmpeg.exe -hwaccel auto -i  %s -c:v h264_qsv -ss %s -to %s -async 1 %s -y"
+        "ffmpeg\\bin\\ffmpeg.exe -hwaccel auto -i  %s -ss %s -to %s -async 1 %s -y"
         % (params["name1"], params["start"], params["end"], params["name2"])
-    )
+        )
     # 删除原视频
     try:
         os.remove("%s" % (params["name1"]))
