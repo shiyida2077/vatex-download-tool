@@ -14,6 +14,7 @@ def download(videoid,path):
     # 把起止时间从json中的八位秒数，转换为正常秒数，之后再转换为 xx：xx：xx的形式
     section = [int(videoid[12:18]), int(videoid[19:])]
     print("[TimeSection]: ",section)
+    start_time = end_time = ""
     for i in range(2, -1, -1):
         start_time += "%s:" % str(section[0] // (60 ** i)).zfill(2)
         section[0] -= (60 ** i) * (section[0] // (60 ** i))
